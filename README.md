@@ -158,7 +158,7 @@ Given the **Strategy** below, write the code needed for the Cubes, so that when 
     //The following line is an example of loading the 2 cubes into a strategy.They will be executed in this order
     var addCubes = await Strategy.methods.addCubes([PancakeRouteraddress,PancakeRouteraddress],[data1,data2]).send({ from: accounts[0] });
 
-For questions regarding the bounty challenge send a DM to br#7886 on Discord
+For questions regarding the bounty challenge send a DM to br#7886 on Discord or @The_donkey_man on Telegram
 
 ### How to submit
 Send a .zip with your solution to br#7886 on Discord
