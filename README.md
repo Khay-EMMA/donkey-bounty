@@ -125,7 +125,7 @@ You will not need to change the Solidity code below, it's included here to help 
 Given the **Strategy** below, write the code needed for the Cubes, so that when the **Cubes** are passed in to the **Strategy**, the Strategy runs successfully 
 1. Go to Alpacafinance and deposit BUSD. Receive ibBUSD
 2. Still on Alpacafinance take the ibBUSD from step 1 and stake it to get ALPACA as a reward
-3. When the ALPACA balance reaches $1000 value, transfer the rewarded ALPACA to Pancakeswap
+3. When the ALPACA reward becomes available, transfer the rewarded ALPACA to Pancakeswap
 4. On Pancakeswap swap ALPACA for BUSD and start over from step 1
 
 ### The code has to be written in Web3 and be capable of being run from the frontend. Example code below from another, sample strategy:
