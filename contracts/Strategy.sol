@@ -1,8 +1,10 @@
-pragma solidity 0.8.3;
+// "SPDX-License-Identifier: UNLICENSED"
+
+pragma solidity 0.7.4;
 
 contract Strategy {
   enum cubesType {
-    INVEST, 
+    INVEST
 }
 
 struct cubesDetails{
@@ -26,9 +28,8 @@ function addCubes(
 )
     external
 {
-    require(
-        locked == false,
-        "Strategy is locked and cannot be changed”
+    require(locked == false, 
+    "Strategy is locked and cannot be changed"
     );
 
     require(
