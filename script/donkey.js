@@ -1,9 +1,16 @@
 var Web3 = require("web3");
 
+/* todo: 1. deposit busd and get ibusd : yet to find the contract address and abi
+          2. use the ibusd and call deposit function on the fair launch contract to get allocated alpaca
+          3. wait for alpaca token to be available
+          4. transfer alpaca token to pancakeswap ang get busd
+*/
+
 var web3 = new Web3("HTTP://127.0.0.1:8545");
 
-var WBNBaddress = "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c";
-var BDOaddress = "0x190b589cf9Fb8DDEabBFeae36a813FFb2A702454";
+var iBusdAddress = "0x7C9e73d4C71dae564d41F78d56439bB4ba87592f";
+var AlpacaAddress = "0x8F0528cE5eF7B51152A59745bEfDD91D97091d2F";
+var fairLaunchAddress = "0xA625AB01B08ce023B2a342Dbb12a16f2C8489A8F";
 var BUSDaddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56";
 var strategyAddress = "0xB885aF37aDb11e200747Ae9E8f693d0E44751c09";
 var PancakeRouteraddress = "0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F";
@@ -40,6 +47,11 @@ async function run() {
     account1 = accounts[0];
     account2 = accounts[1];
 
+    await BUSDContract.methods.transfer(account1, Amount).send({ from: unlockedAddress });
+
+  let recipientBalance = await BUSDContract.methods.balanceOf(account1).call();
+
+  console.log(`Recipient: ${account1} Busd Balance: ${recipientBalance}`);
 
   //approve pancake swap to take 10 busd
   await BUSDContract.methods.approve(PancakeRouteraddress, Amount).send({ from: account1 });
@@ -48,11 +60,7 @@ async function run() {
     `Address ${PancakeRouteraddress}  has been approved to spend ${Amount} x 10^-18 Busd by Owner:  ${account1}`
   );
 
-  await BUSDContract.methods.transfer(account1, Amount).send({ from: unlockedAddress });
-
-  let recipientBalance = await BUSDContract.methods.balanceOf(account1).call();
-
-  console.log(`Recipient: ${account1} Busd Balance: ${recipientBalance}`);
+  
 
   let blockData = await web3.eth.getBlock("pending");
 
